@@ -1,0 +1,25 @@
+# Node
+node_modules
+
+# Logs
+*.log
+
+# dotenv environment variables file
+.env
+prod.env
+test.env
+
+
+# Global Jetbrains Template
+.idea
+*.iml
+
+# Reports
+reports
+coverage-result.txt
+
+# Dist
+dist
+
+# Yarn
+yarn.lock
