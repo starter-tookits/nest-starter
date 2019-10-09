@@ -14,16 +14,9 @@
     "noImplicitAny": false,
     "allowJs": true,
     "paths": {
-      "@/*": [
-        "src/*"
-      ]
+      "@/*": ["src/*"]
     },
-    "typeRoots": [
-      "./node_modules/@types"
-    ]
+    "typeRoots": ["./node_modules/@types"]
   },
-  "exclude": [
-    "node_modules",
-    "packages"
-  ]
+  "exclude": ["node_modules", "__tests__/**/*.ts"]
 }
