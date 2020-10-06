@@ -1,5 +1,4 @@
 {
-  "language": "ts",
-  "collection": "@nestjs/schematics",
+  "collection": "nestx-schematics",
   "sourceRoot": "src"
 }
