@@ -1,127 +1,51 @@
 {
   "name": "nest-starter",
-  "version": "0.0.1",
-  "description": "",
-  "author": "",
-  "license": "MIT",
   "private": true,
+  "version": "0.0.1",
+  "license": "MIT",
   "scripts": {
-    "build": "rimraf dist && tsc -p tsconfig.build.json",
+    "prebuild": "rimraf dist",
+    "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\"",
-    "start": "ts-node -r tsconfig-paths/register src/main.ts",
-    "start:dev": "tsc-watch -p tsconfig.build.json --onSuccess \"node -r ts-node/register -r tsconfig-paths/register dist/main.js\"",
-    "start:debug": "tsc-watch -p tsconfig.build.json --onSuccess \"node --inspect-brk -r ts-node/register -r tsconfig-paths/register dist/main.js\"",
-    "start:prod": "node -r tsconfig-paths/register -r ts-node/register  dist/main.js",
-    "prestart:prod": "npm run build",
-    "lint": "eslint src/**/*.ts --fix",
+    "start": "nest start",
+    "start:dev": "nest start --watch",
+    "start:debug": "nest start --debug --watch",
+    "start:prod": "node dist/main",
+    "lint": "eslint \"src/**/*.ts\" --fix",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:cov": "jest --coverage",
-    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand"
+    "test:cov": "jest --coverage"
   },
   "dependencies": {
-    "@godaddy/terminus": "^4.2.1",
-    "@nestjs/common": "^6.10.1",
-    "@nestjs/core": "^6.10.1",
-    "@nestjs/platform-express": "^6.10.1",
-    "@nestjs/swagger": "^3.1.0",
-    "ajv": "^6.10.2",
-    "class-transformer": "^0.3.1",
-    "class-validator": "^0.11.0",
-    "compression": "^1.7.4",
-    "date-fns": "^2.8.1",
-    "dotenv": "^8.2.0",
-    "lodash": "^4.17.15",
-    "reflect-metadata": "^0.1.12",
-    "rimraf": "^3.0.0",
-    "rxjs": "^6.5.3",
-    "swagger-ui-express": "^4.1.1"
+    "@nestjs/common": "^7.1.1",
+    "@nestjs/core": "^7.1.1",
+    "@nestjs/platform-express": "^7.1.1",
+    "reflect-metadata": "^0.1.13",
+    "rimraf": "^3.0.2",
+    "rxjs": "^6.5.5"
   },
   "devDependencies": {
-    "@commitlint/cli": "^8.2.0",
-    "@commitlint/config-conventional": "^8.2.0",
-    "@nestjs/testing": "^6.10.1",
-    "@types/dotenv": "^8.2.0",
-    "@types/express": "^4.17.2",
-    "@types/jest": "^24.0.23",
-    "@types/lodash": "^4.14.149",
-    "@types/node": "12.12.14",
-    "@types/supertest": "2.0.8",
-    "@typescript-eslint/eslint-plugin": "^2.9.0",
-    "@typescript-eslint/parser": "^2.9.0",
-    "eslint": "^6.7.1",
-    "eslint-config-prettier": "^6.7.0",
-    "eslint-plugin-prettier": "^3.1.1",
-    "husky": "^3.1.0",
-    "jest": "24.9.0",
-    "prettier": "1.19.1",
-    "pretty-quick": "^2.0.1",
-    "supertest": "4.0.2",
-    "ts-jest": "24.2.0",
-    "ts-node": "8.5.2",
-    "tsc-watch": "4.0.0",
+    "@nestjs/cli": "^7.2.0",
+    "@nestjs/schematics": "^7.0.0",
+    "@nestjs/testing": "^7.1.1",
+    "@types/express": "^4.17.6",
+    "@types/jest": "^26.0.14",
+    "@types/node": "^14.0.6",
+    "@types/supertest": "^2.0.9",
+    "@typescript-eslint/eslint-plugin": "^4.4.0",
+    "@typescript-eslint/parser": "^4.4.0",
+    "eslint": "^7.1.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.20.2",
+    "jest": "^26.0.1",
+    "nestx-schematics": "^1.0.6",
+    "prettier": "^2.0.5",
+    "supertest": "^5.0.0",
+    "ts-jest": "^26.1.0",
+    "ts-loader": "^8.0.4",
+    "ts-node": "^9.0.0",
     "tsconfig-paths": "^3.9.0",
-    "typescript": "^3.7.2"
-  },
-  "eslintConfig": {
-    "parser": "@typescript-eslint/parser",
-    "extends": [
-      "plugin:@typescript-eslint/recommended",
-      "plugin:prettier/recommended"
-    ],
-    "plugins": [
-      "@typescript-eslint",
-      "prettier"
-    ],
-    "parserOptions": {
-      "ecmaVersion": 2018,
-      "sourceType": "module"
-    },
-    "rules": {
-      "@typescript-eslint/explicit-function-return-type": "off",
-      "@typescript-eslint/explicit-member-accessibility": "off",
-      "@typescript-eslint/no-parameter-properties": "off",
-      "@typescript-eslint/interface-name-prefix": "off"
-    }
-  },
-  "eslintIgnore": [
-    "packages/**"
-  ],
-  "prettier": {
-    "semi": true,
-    "arrowParens": "always",
-    "proseWrap": "never",
-    "singleQuote": true,
-    "printWidth": 80
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ],
-    "rules": {
-      "type-enum": [
-        2,
-        "always",
-        [
-          "chore",
-          "feat",
-          "fix",
-          "docs",
-          "style",
-          "refactor",
-          "test",
-          "ci",
-          "perf",
-          "revert"
-        ]
-      ]
-    }
+    "typescript": "^4.0.3"
   },
   "jest": {
     "moduleFileExtensions": [
@@ -129,11 +53,8 @@
       "json",
       "ts"
     ],
-    "moduleNameMapper": {
-      "^@/(.*)$": "<rootDir>/src/$1"
-    },
     "transform": {
-      "^.+\\.ts$": "ts-jest"
+      "^.+\\.(t|j)s$": "ts-jest"
     },
     "collectCoverageFrom": [
       "<rootDir>/src/**/*.ts"
@@ -141,7 +62,7 @@
     "coverageDirectory": "<rootDir>/reports/coverage",
     "testEnvironment": "node",
     "testMatch": [
-      "<rootDir>/src/**/*/__tests__/**/*.test.ts"
+      "**/__tests__/**/*.test.ts"
     ]
   }
 }

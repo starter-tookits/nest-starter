@@ -1,0 +1,14 @@
+name: ci
+
+on: [push, pull_request]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: SCM
+        uses: actions/checkout@v2
+      - name: Install Dependencies and Build
+        run: |
+          yarn
+          yarn test:cov
